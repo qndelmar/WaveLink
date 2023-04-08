@@ -4,4 +4,5 @@ export interface IValueProps {
   value: string;
   setValue: Dispatch<React.SetStateAction<string>>;
   errorMessage: string;
+  isError: boolean;
 }
