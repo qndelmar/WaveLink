@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import LoginForm from "../../widgets/loginForm/loginForm";
+import { LoginForm } from "../../features/authForms/";
 import "./index.scss";
 
 const Auth: FC = () => {

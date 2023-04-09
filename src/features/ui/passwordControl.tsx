@@ -6,7 +6,7 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
-import { IValueProps } from "./interfaces/IValueProps";
+import { IValueProps } from "../interfaces/IValueProps";
 
 const PasswordControl: FC<IValueProps> = ({
   value,
