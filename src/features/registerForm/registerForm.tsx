@@ -1,32 +1,29 @@
 import React, { FC, useState } from "react";
-import "./index.scss";
+import LoginControl from "../../entities/ui/loginControl";
+import PasswordControl from "../../entities/ui/passwordControl";
 import { Button, FormControl } from "@chakra-ui/react";
-import { useValidate } from "../../../shared/hooks/useValidate";
-import LoginControl from "../../ui/loginControl";
-import PasswordControl from "../../ui/passwordControl";
-import ErrorModal from "../../../entities/ui/AuthErrorModal/errorModal";
+import ErrorModal from "../../entities/ui/errorModal";
 import { getAuth } from "firebase/auth";
-import { app } from "../../../shared/api/firebase/initializeFirebase";
-import { useSignInWithEmail } from "../../../shared";
-import { Link } from "react-router-dom";
+import { app } from "../../shared/api/firebase/initializeFirebase";
+import { useValidate } from "../../shared/hooks/useValidate";
+import { useSignUp } from "../../shared";
 
-const LoginForm: FC = () => {
+const RegisterForm: FC = () => {
   const auth = getAuth(app);
   const [login, setLogin, loginErrorMessage] = useValidate("login");
   const [password, setPassword, passErrorMessage] = useValidate("password");
   const [validationError, setValidationError] = useState<boolean>(false);
-  const [signInWithEmailAndPassword, loading, error, setError] =
-    useSignInWithEmail(auth);
-
-  async function signIn(e: React.MouseEvent<HTMLButtonElement>) {
+  const [signUpWithEmail, loading, error, setError] = useSignUp(auth, {
+    sendEmailVerification: true,
+  });
+  async function signUp(e: React.MouseEvent<HTMLButtonElement>) {
     e.stopPropagation();
     if (loginErrorMessage || passErrorMessage) {
       setValidationError(true);
       return;
     }
-    await signInWithEmailAndPassword(login, password);
+    await signUpWithEmail(login, password);
   }
-
   return (
     <form className="form">
       <LoginControl
@@ -46,16 +43,15 @@ const LoginForm: FC = () => {
           bg="violet"
           _hover={{ background: "darkviolet" }}
           className="submit-btn"
-          onClick={signIn}
+          onClick={signUp}
           isLoading={loading}
         >
-          Login
+          Register
         </Button>
       </FormControl>
       <ErrorModal error={error} setError={setError} />
-      <Link to="/register">Don&apos;t have an account?</Link>
     </form>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

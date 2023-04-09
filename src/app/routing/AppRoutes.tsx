@@ -4,7 +4,7 @@ import Auth from "../../pages/Auth/Auth";
 import Main from "../../pages/Main";
 import Register from "../../pages/Register/Register";
 import { getAuth } from "firebase/auth";
-import { actions as userActions, user } from "../../features/authForms";
+import { actions as userActions, user } from "../../features";
 import { app } from "../../shared/api/firebase/initializeFirebase";
 import { useAppDispatch } from "../store/hooks/hooks";
 const AppRoutes: FC = () => {

@@ -1,1 +1,6 @@
-export * from "./ui/AuthErrorModal/errorModal";
+export {
+  LoginControl,
+  PasswordControl,
+  ErrorModal,
+  GoogleLoginButton,
+} from "./ui";

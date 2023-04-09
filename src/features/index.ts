@@ -1,3 +1,3 @@
-export * from "./authForms/index";
-export { default as loginControl } from "./ui/loginControl";
-export { default as passwordControl } from "./ui/passwordControl";
+export { default as LoginForm } from "./loginForm/loginForm";
+export { default as RegisterForm } from "./registerForm/registerForm";
+export { actions, loginReducer, user } from "./model";

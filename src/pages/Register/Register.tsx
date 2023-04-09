@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { RegisterForm } from "../../features/authForms";
+import { RegisterForm } from "../../features";
 import "./index.scss";
 
 const Register: FC = () => {
