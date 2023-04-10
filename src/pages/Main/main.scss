@@ -1,0 +1,10 @@
+.wrapper{
+  display: flex;
+}
+.content-part{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 99vh;
+}

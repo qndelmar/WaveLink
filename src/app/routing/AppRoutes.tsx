@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Auth from "../../pages/Auth/Auth";
-import Main from "../../pages/Main";
+import Main from "../../pages/Main/Main";
 import Register from "../../pages/Register/Register";
 import { getAuth } from "firebase/auth";
 import { actions as userActions, user } from "../../features";
