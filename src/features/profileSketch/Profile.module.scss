@@ -1,0 +1,34 @@
+.wrapper{
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  width: 95%;
+  transition: .15s;
+  padding: 10px 10px;
+  border-radius: 15px;
+}
+.wrapper:hover{
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  .greater__than{
+    margin-left: 28px;
+  }
+}
+.profile__image{
+  border-radius: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+  width: 70px;
+  margin-right: 10px;
+}
+.text__wrapper{
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+}
+.greater__than{
+  width: 30px;
+  height: 20px;
+  object-fit: contain;
+  transition: .25s all;
+  margin-left: 20px;
+}

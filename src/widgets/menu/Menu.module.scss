@@ -1,0 +1,62 @@
+.wrapper{
+  display: flex;
+  height: 100vh;
+  width: 350px;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 5px black;
+}
+.icon{
+  width: 200px;
+  object-fit: contain;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  padding-top: 20px;
+}
+.menu__items{
+  height: 80vh;
+  width: 95%;
+}
+ul{
+  width: 95%;
+}
+li{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 7vh;
+  align-items: center;
+  font-size: 25px;
+  font-family: "Poppins", sans-serif;
+  text-transform: lowercase;
+}
+.grid{
+  padding: 10px 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  border-radius: 15px;
+  transition: .25s;
+}
+.faIcon{
+  margin-left: 3rem;
+  padding: 10px 10px;
+  font-size: 1.5rem;
+  color: rgba(123, 8, 199, 0.82);
+  border-radius: 15px;
+}
+.active{
+  background: rgba(255, 210, 255, 0.4);
+}
+.active{
+  .faIcon{
+    background: rgba(148, 0, 211, 0.3);
+    color: white;
+  }
+  color: darkviolet;
+  font-weight: bold;
+}

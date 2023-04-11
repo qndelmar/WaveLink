@@ -5,6 +5,8 @@ interface IStateUser {
   token: string;
   uid: string | undefined;
   isAuth: boolean;
+  photoUri: string,
+  defaultName: string
 }
 
 const initialState: IStateUser = {
@@ -12,6 +14,8 @@ const initialState: IStateUser = {
   token: "",
   uid: undefined,
   isAuth: false,
+  photoUri: "",
+  defaultName: ""
 };
 
 const loginSlice = createSlice({
@@ -22,6 +26,8 @@ const loginSlice = createSlice({
       state.email = action.payload.email;
       state.token = action.payload.token;
       state.uid = action.payload.uid;
+      state.photoUri = action.payload.photoUri;
+      state.defaultName = action.payload.defaultName;
       state.isAuth = true;
     },
     removeUser(state) {

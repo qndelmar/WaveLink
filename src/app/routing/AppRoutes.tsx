@@ -1,12 +1,15 @@
 import React, { FC, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Auth from "../../pages/Auth/Auth";
-import Main from "../../pages/Main/Main";
 import Register from "../../pages/Register/Register";
 import { getAuth } from "firebase/auth";
 import { actions as userActions, user } from "../../features";
 import { app } from "../../shared/api/firebase/initializeFirebase";
 import { useAppDispatch } from "../store/hooks/hooks";
+import HomepageLayout from "../../pages/HomepageLayout";
+import ChatPage from "../../pages/ChatPage";
+import HomePage from "../../pages/HomePage";
+import Settings from "../../pages/Settings";
 const AppRoutes: FC = () => {
   const dispatch = useAppDispatch();
   const { setUser } = userActions;
@@ -23,16 +26,22 @@ const AppRoutes: FC = () => {
             token: currentUser?.refreshToken || "",
             uid: currentUser?.uid,
             isAuth: true,
+            photoUri: currentUser?.photoURL || '',
+            defaultName: currentUser?.displayName || ''
           })
         );
-        navigate("/main");
+        navigate("/");
       }
     });
   }, []);
   return isAuth ? (
     <Routes>
-      <Route path={"/"} element={<Main />} />
-      <Route path="*" element={<Navigate to="/" />} />
+        <Route element={<HomepageLayout/>}>
+            <Route  path="home" element={<HomePage/>}/>
+            <Route path="chat" element={<ChatPage/>} />
+            <Route path="settings" element={<Settings/>}/>
+            <Route path="*" element={<Navigate to="/home" />} />
+        </Route>
     </Routes>
   ) : (
     <Routes>
