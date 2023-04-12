@@ -9,7 +9,7 @@ import { useAppDispatch } from "../store/hooks/hooks";
 import HomepageLayout from "../../pages/HomepageLayout";
 import ChatPage from "../../pages/ChatPage";
 import HomePage from "../../pages/HomePage";
-import Settings from "../../pages/Settings";
+import Settings from "../../pages/Settings/Settings";
 const AppRoutes: FC = () => {
   const dispatch = useAppDispatch();
   const { setUser } = userActions;
