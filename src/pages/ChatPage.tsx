@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 
 const ChatPage:FC = () => {
     return (
-        <div>
+        <div className="additional">
         </div>
     );
 };

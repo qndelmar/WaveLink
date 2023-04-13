@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import {ChakraProvider, ColorModeScript} from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import { setupStore } from "./app/store";
-import theme from "./shared/helpers/theme";
+import theme from "./shared/config/theme";
 const store = setupStore();
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

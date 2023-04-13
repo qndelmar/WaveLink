@@ -4,7 +4,7 @@ import Menu from "../widgets/menu/Menu";
 
 const HomepageLayout:FC = () => {
     return (
-        <div>
+        <div className="homePage">
             <Menu/>
             <Outlet/>
         </div>

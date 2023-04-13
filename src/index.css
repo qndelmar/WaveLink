@@ -68,3 +68,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.homePage{
+  display: flex;
+}
+.additional{
+
+}
+.settings{
+  margin-left: 30px;
+}
