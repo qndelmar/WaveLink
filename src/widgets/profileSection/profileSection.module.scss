@@ -1,0 +1,40 @@
+.img{
+  border-radius: 100%;
+  width: 100px;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.mainData{
+  display: flex;
+  align-items: center;
+}
+.name{
+  margin-left: 30px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.editIcon{
+  margin-left: 5px;
+  transition: .25s all;
+}
+.editIcon:hover{
+  color: #fdbafd;
+}
+.otherData{
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+}
+.passwordChange{
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  width: 35vh;
+}
+.input{
+  margin-top: 10px;
+}

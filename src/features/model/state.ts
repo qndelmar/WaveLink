@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IStateUser {
-  email: string;
-  token: string;
-  uid: string | undefined;
-  isAuth: boolean;
-  photoUri: string,
-  defaultName: string
+  email?: string;
+  token?: string;
+  uid?: string | undefined;
+  isAuth?: boolean;
+  photoUri?: string,
+  defaultName?: string
 }
 
 const initialState: IStateUser = {
@@ -23,11 +23,11 @@ const loginSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action: PayloadAction<IStateUser>) {
-      state.email = action.payload.email;
-      state.token = action.payload.token;
-      state.uid = action.payload.uid;
-      state.photoUri = action.payload.photoUri;
-      state.defaultName = action.payload.defaultName;
+      state.email = action.payload.email || state.email;
+      state.token = action.payload.token || state.token;
+      state.uid = action.payload.uid || state.uid;
+      state.photoUri = action.payload.photoUri || state.photoUri;
+      state.defaultName = action.payload.defaultName || state.defaultName;
       state.isAuth = true;
     },
     removeUser(state) {
