@@ -1,11 +1,11 @@
 import React, {FC, useEffect, useState} from 'react';
-import cl from "../../widgets/profileSection/profileSection.module.scss";
+import cl from "../widgets/profileSection/profileSection.module.scss";
 import {Button, FormControl, Input} from "@chakra-ui/react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faPenToSquare} from "@fortawesome/free-solid-svg-icons";
-import {actions, user} from "../../features";
-import {useUpdateProfile} from "../../shared/hooks/useUpdateUser";
-import {useAppDispatch} from "../../app/store/hooks/hooks";
+import {actions, user} from "../features";
+import {useUpdateProfile} from "../shared/hooks/useUpdateUser";
+import {useAppDispatch} from "../app/store/hooks/hooks";
 import {getAuth} from "firebase/auth";
 
 const EditName:FC = () => {

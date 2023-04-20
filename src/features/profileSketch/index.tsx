@@ -1,14 +1,15 @@
 import React, {FC, useState} from 'react';
 import cl from './Profile.module.scss';
-import {user} from '../model/';
+import { user} from '../model/';
 import defaultProfileImage from '../../shared/assets/images/profile.webp';
 import greaterThan from '../../shared/assets/images/greaterthan.svg';
 import {useNavigate} from "react-router-dom";
 
 const ProfileSketch:FC = () => {
-    const [imageUri] = useState<string>(user().photoUri);
-    const [email] = useState<string>(user().email);
-    const [defaultName] = useState<string>(user().defaultName);
+    const [imageUri] = useState<string>(user().photoUri || '');
+    const [email] = useState<string>(user().email || '');
+    const [defaultName] = useState<string>(user().defaultName || '');
+
 
     const navigate = useNavigate();
     return (

@@ -31,9 +31,11 @@ const loginSlice = createSlice({
       state.isAuth = true;
     },
     removeUser(state) {
-      state.email = "";
-      state.token = "";
-      state.uid = undefined;
+      state.email = '';
+      state.token = '';
+      state.uid = '';
+      state.photoUri = '';
+      state.defaultName = '';
       state.isAuth = false;
     },
   },

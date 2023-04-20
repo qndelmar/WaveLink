@@ -1,16 +1,28 @@
 import React, {FC, useState} from 'react';
-import { user} from '../../features';
+import {actions, user} from '../../features';
 import defaultImage from '../../shared/assets/images/profile.webp';
 import cl from './profileSection.module.scss';
-import EditName from "../../entities/ui/EditName";
+import EditName from "../../entities/EditName";
 import {
     Button
 } from "@chakra-ui/react";
 import ChangingPasswordModal from "../../features/changingPassword/changingPasswordModal";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSignOut} from "@fortawesome/free-solid-svg-icons";
+import {getAuth, signOut} from "firebase/auth";
+import {useAppDispatch} from "../../app/store/hooks/hooks";
 
 const ProfileSection:FC = () => {
     const [currentUserImage] = useState<string | null>(user().photoUri || '');
     const [isShown, setIsShown] = useState<boolean>(false);
+    const dispatch = useAppDispatch();
+    const {removeUser} = actions;
+
+    const auth = getAuth();
+    async function logOut() {
+        await signOut(auth);
+        dispatch(removeUser())
+    }
 
     return (
         <div>
@@ -26,6 +38,9 @@ const ProfileSection:FC = () => {
                     <ChangingPasswordModal isShown={isShown} setIsShown={setIsShown}/>
                 </div>
             </div>
+            <Button onClick={logOut}>
+                <FontAwesomeIcon icon={faSignOut}/>
+            </Button>
         </div>
     );
 };

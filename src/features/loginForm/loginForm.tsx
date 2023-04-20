@@ -9,7 +9,7 @@ import { getAuth } from "firebase/auth";
 import { app } from "../../shared/api/firebase/initializeFirebase";
 import { useSignInWithEmail } from "../../shared";
 import { Link } from "react-router-dom";
-import GoogleLoginBtn from "../../entities/ui/googleLoginBtn";
+import GoogleLoginBtn from "../../entities/googleLoginBtn/googleLoginBtn";
 
 const LoginForm: FC = () => {
   const auth = getAuth(app);
