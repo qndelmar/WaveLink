@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import FindOrCreateChat from "../features/findOrCreateChat/findOrCreateChat";
 import { collection, query, where, onSnapshot, getFirestore, or } from "firebase/firestore";
 import {user} from '../features';
@@ -11,19 +11,24 @@ const ChatPage:FC = () => {
         where('firstUser.uid', '==', currentUser.uid),
         where('secondUser.uid', '==', currentUser.uid)
     ))
-    const chatsArray:DocumentData = [];
-    onSnapshot(q, (qSnap) => {
-        qSnap.forEach((doc) => {
-            chatsArray.push(doc.data());
+    const [chatsArray, setChatsArray] = useState<DocumentData[]>([]);
+    useEffect(() => {
+        onSnapshot(q, (qSnap) => {
+            const chats:DocumentData[] = [];
+            qSnap.forEach((doc) => {
+                chats.push(doc.data());
+            })
+            setChatsArray(chats);
         })
-    })
-    console.log(chatsArray[0]?.firstUser.email);
+    }, [])
+
+
 
     return (
         <div className="additional dialogs">
             <FindOrCreateChat/>
-            {chatsArray.map((el:DocumentData) => {
-                return <div key={Date.now()}>{el.firstUser.email}</div>
+            {chatsArray.map((el:DocumentData, index) => {
+                return <div key={index}>{el.firstUser.uid}</div>
             })}
         </div>
     );

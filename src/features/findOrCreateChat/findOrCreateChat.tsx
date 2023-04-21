@@ -4,6 +4,7 @@ import {PlusSquareIcon, SearchIcon} from '@chakra-ui/icons';
 import './findOrCreateChat.scss'
 
 const FindOrCreateChat:FC = () => {
+
     return (
         <div className="grid-2-col">
             <InputGroup>
