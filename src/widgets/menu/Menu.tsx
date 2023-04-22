@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import menuIcon from '../../shared/assets/images/wavelink.webp';
 import cl from './Menu.module.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faGear, faHouse, faMessage} from "@fortawesome/free-solid-svg-icons";
+import {faGear, faHouse, faMessage, faUser} from "@fortawesome/free-solid-svg-icons";
 import { NavLink} from "react-router-dom";
 import ProfileSketch from "../../features/profileSketch";
 
@@ -27,6 +27,14 @@ const Menu:FC = () => {
                                    to="/chat">
                             <FontAwesomeIcon icon={faMessage} className={cl.faIcon}/>
                             Dialogs
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className={({ isActive }) =>
+                            isActive ? [cl.grid, cl.active].join(' ') : cl.grid
+                        } to="/friends">
+                            <FontAwesomeIcon icon={faUser} className={cl.faIcon}/>
+                            Friends
                         </NavLink>
                     </li>
                     <li>

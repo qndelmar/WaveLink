@@ -7,6 +7,8 @@ import {
 } from "firebase/auth";
 import { SignInWithPopupHook } from "../types";
 import { useCallback, useState } from "react";
+import {doc, getFirestore, setDoc} from "firebase/firestore";
+
 
 export const useSignInWithPopup = (
   auth: Auth,
@@ -23,7 +25,9 @@ export const useSignInWithPopup = (
       setError(undefined);
       try {
         const provider = createProvider(scopes, customOAuthParameters);
-        return await signInWithPopup(auth, provider);
+        const user = await signInWithPopup(auth, provider);
+        await setDoc(doc(getFirestore(), "friends", user.user.uid), {}, {merge: true})
+        return user;
       } catch (err) {
         setError(err as AuthError);
       } finally {

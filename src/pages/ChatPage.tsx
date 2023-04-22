@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { FC, useEffect, useState} from 'react';
 import FindOrCreateChat from "../features/findOrCreateChat/findOrCreateChat";
 import { collection, query, where, onSnapshot, getFirestore, or } from "firebase/firestore";
 import {user} from '../features';
@@ -21,8 +21,6 @@ const ChatPage:FC = () => {
             setChatsArray(chats);
         })
     }, [])
-
-
 
     return (
         <div className="additional dialogs">
