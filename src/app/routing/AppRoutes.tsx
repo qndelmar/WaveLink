@@ -11,6 +11,7 @@ import ChatPage from "../../pages/ChatPage";
 import HomePage from "../../pages/HomePage";
 import Settings from "../../pages/Settings/Settings";
 import FindFriends from "../../pages/FindFriends";
+import FriendsList from "../../pages/FriendsList";
 const AppRoutes: FC = () => {
   const dispatch = useAppDispatch();
   const { setUser } = userActions;
@@ -42,7 +43,9 @@ const AppRoutes: FC = () => {
             <Route path="chat" element={<ChatPage/>} />
             <Route path="settings" element={<Settings/>}/>
             <Route path="*" element={<Navigate to="/home" />} />
-            <Route path="friends" element={<FindFriends/>}/>
+            <Route path="friends" element={<FindFriends/>}>
+                <Route path=":kind" element={<FriendsList/>}/>
+            </Route>
         </Route>
     </Routes>
   ) : (

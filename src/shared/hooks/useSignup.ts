@@ -31,6 +31,7 @@ export default (
           );
         }
         if(user.user){
+            await setDoc(doc(getFirestore(), 'users', user.user.uid), {email: user.user.email, displayName: user.user.displayName}, {merge: true})
             await setDoc(doc(getFirestore(), "friends", user.user.uid), {}, {merge: true})
         }
         return user;

@@ -30,3 +30,7 @@ declare type SignInWithPopupHook = AuthActionHook<
     customOAuthParameters?: CustomParameters
   ) => Promise<UserCredential | undefined>
 >;
+declare type UserFromFirestore = {
+  email: string,
+  displayName: string
+}

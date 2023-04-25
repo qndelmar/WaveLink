@@ -7,10 +7,12 @@ import {actions, user} from "../features";
 import {useUpdateProfile} from "../shared/hooks/useUpdateUser";
 import {useAppDispatch} from "../app/store/hooks/hooks";
 import {getAuth} from "firebase/auth";
+import {updateDoc, doc, getFirestore} from 'firebase/firestore';
 
 const EditName:FC = () => {
     const auth = getAuth();
     const name = user().defaultName;
+    const uid = user().uid || '';
     const [userName, setUserName] = useState(name);
     const [isEditNow, setIsEditNow] = useState(false);
     const [updateProfile, loading, error] = useUpdateProfile(auth);
@@ -23,6 +25,7 @@ const EditName:FC = () => {
             return;
         }
         await updateProfile({displayName: updatedName});
+        await updateDoc(doc(getFirestore(), "users", uid), {displayName: updatedName});
         if(!error){
             setIsEditNow(false);
             await auth.updateCurrentUser(auth.currentUser);
