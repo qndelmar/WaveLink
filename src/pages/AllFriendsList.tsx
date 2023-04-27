@@ -2,21 +2,22 @@ import React, {FC, useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {useGetFriends} from "../shared/hooks/useGetFriends";
 import {user} from "../features";
+import {DocumentData} from "firebase/firestore";
 
 const AllFriendsList:FC = () => {
     const uid = user().uid || 'none';
     const {kind} = useParams();
-    const getData= useGetFriends(uid,kind || 'all');
-    const [, setFriendsList] = useState();
+    const [getData,data]= useGetFriends(uid,kind || 'all');
+    const [, setFriendsList] = useState<DocumentData | undefined>();
     async function getFriends(){
-        setFriendsList(await getData());
+        await getData();
+        setFriendsList(data);
     }
     useEffect(() => {
         getFriends();
     }, [])
     return (
         <div>
-
         </div>
     );
 };
