@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, {FC, useEffect, useState} from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Auth from "../../pages/Auth/Auth";
 import Register from "../../pages/Register/Register";
@@ -12,9 +12,11 @@ import HomePage from "../../pages/HomePage";
 import Settings from "../../pages/Settings/Settings";
 import FindFriends from "../../pages/FindFriends";
 import AllFriendsList from "../../pages/AllFriendsList";
+import Preloader from "../../shared/ui/Preloader";
 const AppRoutes: FC = () => {
   const dispatch = useAppDispatch();
   const { setUser } = userActions;
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const { isAuth } = user();
   const auth = getAuth(app);
   const navigate = useNavigate();
@@ -34,9 +36,10 @@ const AppRoutes: FC = () => {
         );
         navigate("/");
       }
+      setIsLoading(false);
     });
   }, []);
-  return isAuth ? (
+  return !isLoading ? (isAuth ? (
     <Routes>
         <Route element={<HomepageLayout/>}>
             <Route  path="home" element={<HomePage/>}/>
@@ -55,7 +58,7 @@ const AppRoutes: FC = () => {
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
-  );
+  )) : <Preloader isLoading={isLoading}/>;
 };
 
 export default AppRoutes;

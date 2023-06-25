@@ -35,7 +35,7 @@ const ChangingPasswordModal:FC<ChangeType> = ({isShown, setIsShown}) => {
         }
     }
     return (
-        <Modal isCentered  isOpen={isShown} onClose={() => setIsShown(false)}>
+        <Modal isCentered isOpen={isShown} onClose={() => setIsShown(false)}>
             <ModalOverlay/>
             <ModalContent>
                 <ModalHeader>{'Change your password error'}</ModalHeader>
